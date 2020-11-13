@@ -12,7 +12,7 @@ import pandas as pd
 
 import pickle
 
-
+start = datetime.now()
 X = np.load('data/X.npy')
 kmeans = pickle.load(open('models/finalized_model.sav', 'rb'))
 clustered = pickle.load(open('models/clustered.sav', 'rb'))
@@ -43,3 +43,6 @@ ax[0].set_title('Visualized on TSNE')
 ax[1].set_title('Visualized on PCA')
 plt.savefig('plots/PCA_TSNE_1.jpg', bbox_inches='tight')
 plt.show()
+
+finish = datetime.now()
+print(finish - start)
