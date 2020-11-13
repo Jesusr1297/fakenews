@@ -23,7 +23,7 @@ model = Word2Vec(processed_data, min_count=1)
 def return_vector(model_made, x):
     try:
         return model_made[x]
-    except:
+    finally:
         return np.zeros(100)
 
 
