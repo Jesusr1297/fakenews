@@ -37,8 +37,8 @@ TSNE_df['cluster'] = clustered
 
 # Plots
 fig, ax = plt.subplots(1, 2, figsize=(12, 6))
-sns.scatterplot(data=PCA_df, x='x1', y='x2', hue='cluster', legend="full", alpha=0.5, ax=ax[1], palette=['darkred', 'indigo'])      # sns.color_palette('rocket', 2)
-sns.scatterplot(data=TSNE_df, x='x1', y='x2', hue='cluster', legend="full", alpha=0.5, ax=ax[0], palette=['darkred', 'indigo'])     # ['darkred', 'indigo']
+sns.scatterplot(data=PCA_df, x='x1', y='x2', hue='cluster', legend="full", alpha=0.5, ax=ax[1], palette=sns.color_palette('rocket', 2))      # sns.color_palette('rocket', 2)
+sns.scatterplot(data=TSNE_df, x='x1', y='x2', hue='cluster', legend="full", alpha=0.5, ax=ax[0], palette=sns.color_palette('rocket', 2))     # ['darkred', 'indigo']
 ax[0].set_title('Visualized on TSNE')
 ax[1].set_title('Visualized on PCA')
 plt.savefig('plots/PCA_TSNE_1.jpg', bbox_inches='tight')
