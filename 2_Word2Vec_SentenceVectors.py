@@ -2,6 +2,7 @@
 
 from gensim.models import Word2Vec
 import numpy as np
+import pickle
 
 # Time control
 from datetime import datetime
@@ -34,6 +35,7 @@ def sentence_vector(model_made, sentence):
 
 X = [sentence_vector(model, data) for data in processed_data]
 np.save('data/X', X)
+pickle.dump(model, open('models/model.sav', 'wb'))
 
 finish = datetime.now()
 print(finish - start)
