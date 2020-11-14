@@ -1,5 +1,3 @@
-# ## Custom News Tests
-
 import numpy as np
 import pickle
 from glob import glob
