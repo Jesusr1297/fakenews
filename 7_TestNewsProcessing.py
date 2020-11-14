@@ -13,4 +13,4 @@ kmeans = pickle.load(open('models/kmeans.pkl', 'rb'))
 glob_list = glob('news/*.txt')
 news_list = [open(new, 'r', encoding='utf8').read() for new in glob_list]
 
-pickle.dump(prepare_news(news_list), open('models/news_list.pkl', 'wb'))
+pickle.dump(prepare_news(news_list), open('news/news_list.pkl', 'wb'))
