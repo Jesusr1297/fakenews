@@ -2,16 +2,11 @@
 
 import pandas as pd
 import numpy as np
-import re
+from functions import CUSTOM_FILTERS
 
 # Preprocessing
-from gensim.parsing.preprocessing import preprocess_string, strip_tags, strip_punctuation, strip_multiple_whitespaces, \
-                                            strip_numeric, remove_stopwords, strip_short
+from gensim.parsing.preprocessing import preprocess_string
 
-# Time control
-from datetime import datetime
-
-start = datetime.now()
 
 fake = pd.read_csv('data/Fake.csv')
 true = pd.read_csv('data/True.csv')
@@ -79,16 +74,6 @@ final_data = final_data.drop(['title', 'text', 'subject', 'date'], axis=1)
 print(final_data.head(10))
 
 
-# Here we preprocess the sentences
-def remove_url(s):
-    regex = re.compile(r'https?://\S+|www\.\S+|bit\.ly\S+')
-    return regex.sub(r'', s)
-
-
-# Preprocessing functions to remove lowercase, links, whitespace, tags, numbers, punctuation, strip words
-CUSTOM_FILTERS = [lambda x: x.lower(), strip_tags, remove_url, strip_punctuation, strip_multiple_whitespaces,
-                  strip_numeric, remove_stopwords, strip_short]
-
 # Here we store the processed sentences and their label
 words_broken_up = [preprocess_string(sentence, CUSTOM_FILTERS) for sentence in final_data.Sentences]
 processed_data = [word for word in words_broken_up if len(word) > 0]
@@ -99,6 +84,3 @@ print(processed_data[:20])
 
 np.save('data/processed_labels', processed_labels)
 np.save('data/processed_data', processed_data)
-
-finish = datetime.now()
-print(finish - start)

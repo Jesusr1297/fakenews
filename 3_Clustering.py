@@ -21,5 +21,5 @@ testing_df = pd.DataFrame(data=testing_df)
 testing_df['is_correct'] = np.logical_not(np.logical_xor(testing_df['Labels'], testing_df['Prediction']))
 print(np.sum(testing_df.is_correct)/np.sum(len(testing_df.is_correct))*100)
 
-pickle.dump(kmeans, open('models/kmeans.sav', 'wb'))
-pickle.dump(clustered, open('models/clustered.sav', 'wb'))
+pickle.dump(kmeans, open('models/kmeans.pkl', 'wb'))
+pickle.dump(clustered, open('models/clustered.pkl', 'wb'))
