@@ -1,9 +1,13 @@
+"""
+    This is the core code from de whole bunch of codes
+    here we train our unsupervised learning model and evaluate
+    its accuracy
+"""
+
 import pandas as pd
 import numpy as np
 from sklearn import cluster
-
 import pickle
-
 
 # load data and labels generated in 1_DataAnalysis_Cleanup
 processed_data = np.load('data/processed_data.npy', allow_pickle=True)

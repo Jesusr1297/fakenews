@@ -1,3 +1,10 @@
+"""
+In order to get a cleaner and fully understandable code, all functions are written here,
+this can help us to reduce code and only focusing on what matters.
+
+The functions are written in the order they were called.
+"""
+
 import pickle
 import re
 import numpy as np
@@ -52,13 +59,23 @@ def sentence_vector(model_made, sentence):
 
 
 # 7_TestNewsProcessing
-def prepare_news(news=None, method=sentence_vector):
+def prepare_news(news=None, model_made=model, method=sentence_vector):
     """
     Converts given news into a number vector to be evaluated
+    :param model_made: model to use
     :param news: news to be converted, can be a list of strings or a single string
     :param method: how is going to be converted, default: sentence_vector
     :return: an array of vectorized news
     """
     if type(news) is not list:
         news = [news]
-    return np.array([method(model, preprocess_string(new, CUSTOM_FILTERS)) for new in news])
+    return np.array([method(model_made, preprocess_string(new, CUSTOM_FILTERS)) for new in news])
+
+
+#
+def load_model(path):
+    return pickle.load(open(path, 'rb'))
+
+
+def dump(obj, path):
+    return pickle.dump(obj, open(path, 'wb'))

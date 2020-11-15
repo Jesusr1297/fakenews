@@ -1,3 +1,10 @@
+"""
+    In previous code we obtained a list of lists of words,
+    in reality, we training a neural network, we want the strings
+    as numbers, this code does this job with Word2Vec function
+    we then pass the list of lists of numbers to a sentences vector
+"""
+
 from gensim.models import Word2Vec
 import numpy as np
 import pickle
